@@ -1,2 +1,6 @@
 Library/
 Temp/
+.vs/
+XluaGit.Editor.csproj
+XluaGit.sln
+XluaGit.csproj
