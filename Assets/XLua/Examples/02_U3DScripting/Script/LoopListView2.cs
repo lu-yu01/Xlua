@@ -185,8 +185,8 @@ namespace LuyuScrollView
         List<ItemPrefabConfData> mItemPrefabDataList = new List<ItemPrefabConfData>();
         System.Func<LoopListView2, int, LoopListViewItem2> mOnGetItemByIndex;
 
-        public System.Action<LoopListView2, LoopListViewItem2> mOnSnapItemFinished = null;
-        public System.Action<LoopListView2, LoopListViewItem2> mOnSnapNearestChanged = null;
+        //public System.Action<LoopListView2, LoopListViewItem2> mOnSnapItemFinished = null;
+        //public System.Action<LoopListView2, LoopListViewItem2> mOnSnapNearestChanged = null;
 
         Vector3[] mItemWorldCorners = new Vector3[4];
         Vector3[] mViewPortRectLocalCorners = new Vector3[4];
@@ -371,7 +371,7 @@ namespace LuyuScrollView
         {
             mIsDraging = false;
             //mPointerEventData = null;
-            ForceSnapUpdateCheck();
+            //ForceSnapUpdateCheck();
         }
 
         public virtual void OnDrag(PointerEventData eventData)
@@ -405,16 +405,19 @@ namespace LuyuScrollView
             {
                 mContainerTrans.anchoredPosition3D = Vector3.zero;
             }
-            ForceSnapUpdateCheck();
+           // ForceSnapUpdateCheck();
         }
 
-        public void ForceSnapUpdateCheck()
-        {
-            if (mLeftSnapUpdateExtraCount <= 0)
-            {
-                mLeftSnapUpdateExtraCount = 1;
-            }
-        }
+        /// <summary>
+        /// ForceSnapUpdateCheck
+        /// </summary>
+        //public void ForceSnapUpdateCheck()
+        //{
+        //    if (mLeftSnapUpdateExtraCount <= 0)
+        //    {
+        //        mLeftSnapUpdateExtraCount = 1;
+        //    }
+        //}
 
         public void SetListItemCount(int itemCount, bool resetPos = true)
         {

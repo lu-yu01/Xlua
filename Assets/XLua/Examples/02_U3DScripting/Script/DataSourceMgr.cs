@@ -55,7 +55,7 @@ namespace LuyuScrollView
                 tData.mId = i;
                 tData.mName = "Item" + i;
                 //tData.mDesc = "Item Desc For Item " + i;
-              //  tData.mIcon = ResManager.Get.GetSpriteNameByIndex(Random.Range(0, 24));
+                //tData.mIcon = ResManager.Get.GetSpriteNameByIndex(Random.Range(0, 24));
                 //tData.mStarCount = Random.Range(0, 6);
                 //tData.mFileSize = Random.Range(20, 999);
                 //tData.mChecked = false;
