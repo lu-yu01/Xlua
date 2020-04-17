@@ -22,7 +22,7 @@ namespace LuyuScrollView
 
         List<ItemData> mItemDataList = new List<ItemData>();
         static DataSourceMgr instance = null;
-        public int mTotalDataCount = 10000;
+        public int mTotalDataCount = 100;
         public static DataSourceMgr Get
         {
             get

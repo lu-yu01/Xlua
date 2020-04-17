@@ -199,12 +199,12 @@ namespace LuyuScrollView
         float mLastItemPadding = 0;
         int mListUpdateCheckFrameCount = 0;
         int mLastItemIndex = 0;
-        bool mNeedAdjustVec = false;
+        //bool mNeedAdjustVec = false;
         float mDistanceForRecycle0 = 300;
         float mDistanceForNew0 = 200;
         float mDistanceForRecycle1 = 300;
         float mDistanceForNew1 = 200;
-        bool mItemSnapEnable = false;
+        //bool mItemSnapEnable = false;
         Vector3 mLastSnapCheckPos = Vector3.zero;
         Vector2 mAdjustedVec;
         Vector3 mLastFrameContainerPos = Vector3.zero;
@@ -212,11 +212,11 @@ namespace LuyuScrollView
         Vector2 mViewPortSnapPivot = Vector2.zero;
         [SerializeField]
         Vector2 mItemSnapPivot = Vector2.zero;
-        int mCurSnapNearestItemIndex = -1;
-        float mSmoothDumpVel = 0;
-        float mSmoothDumpRate = 0.3f;
-        float mSnapFinishThreshold = 0.1f;
-        float mSnapVecThreshold = 145;
+        //int mCurSnapNearestItemIndex = -1;
+        //float mSmoothDumpVel = 0;
+        //float mSmoothDumpRate = 0.3f;
+        //float mSnapFinishThreshold = 0.1f;
+        //float mSnapVecThreshold = 145;
         PointerEventData mPointerEventData = null;
         public bool IsVertList
         {
@@ -253,11 +253,11 @@ namespace LuyuScrollView
                 mViewPortRectTransform = mScrollRectTransform;
             }
             mIsVertList = (mArrangeType == ListItemArrangeType.TopToBottom);
-            mScrollRect.horizontal = !mIsVertList;
-            mScrollRect.vertical = mIsVertList;
-            AdjustPivot(mViewPortRectTransform);
-            AdjustAnchor(mContainerTrans);
-            AdjustContainerPivot(mContainerTrans);
+            //mScrollRect.horizontal = !mIsVertList;
+            //mScrollRect.vertical = mIsVertList;
+            //AdjustPivot(mViewPortRectTransform);
+            //AdjustAnchor(mContainerTrans);
+            //AdjustContainerPivot(mContainerTrans);
             InitItemPool();
             mOnGetItemByIndex = onGetItemIndex;
             if (mListViewInited == true)
@@ -274,44 +274,56 @@ namespace LuyuScrollView
 
         }
 
-         private void AdjustPivot(RectTransform rtf)
-        {
-            Vector2 pivot = rtf.pivot;
-            switch (mArrangeType)
-            {
-                case ListItemArrangeType.TopToBottom:
-                    pivot.y = 1;
-                    break;
-            }
-            rtf.pivot = pivot;
-        }
+        /// <summary>
+        /// AdjustPivot
+        /// </summary>
+        /// <param name="rtf"></param>
+        //private void AdjustPivot(RectTransform rtf)
+        //{
+        //    Vector2 pivot = rtf.pivot;
+        //    switch (mArrangeType)
+        //    {
+        //        case ListItemArrangeType.TopToBottom:
+        //            pivot.y = 1;
+        //            break;
+        //    }
+        //    rtf.pivot = pivot;
+        //}
 
-         private void AdjustAnchor(RectTransform rtf)
-        {
-            Vector2 anchorMin = rtf.anchorMin;
-            Vector2 anchorMax = rtf.anchorMax;
-            switch (mArrangeType)
-            {
-                case ListItemArrangeType.TopToBottom:
-                    anchorMin.y = 1;
-                    anchorMax.y = 1;
-                    break;
-            }
-            rtf.anchorMin = anchorMin;
-            rtf.anchorMax = anchorMax;
-        }
+        /// <summary>
+        /// AdjustAnchor
+        /// </summary>
+        /// <param name="rtf"></param>
+        //private void AdjustAnchor(RectTransform rtf)
+        //{
+        //    Vector2 anchorMin = rtf.anchorMin;
+        //    Vector2 anchorMax = rtf.anchorMax;
+        //    switch (mArrangeType)
+        //    {
+        //        case ListItemArrangeType.TopToBottom:
+        //            anchorMin.y = 1;
+        //            anchorMax.y = 1;
+        //            break;
+        //    }
+        //    rtf.anchorMin = anchorMin;
+        //    rtf.anchorMax = anchorMax;
+        //}
 
-         private void AdjustContainerPivot(RectTransform rtf)
-        {
-            Vector2 pivot = rtf.pivot;
-            switch (mArrangeType)
-            {
-                case ListItemArrangeType.TopToBottom:
-                    pivot.y = 1;
-                    break;
-            }
-            rtf.pivot = pivot;
-        }
+        /// <summary>
+        /// AdjustContainerPivot
+        /// </summary>
+        /// <param name="rtf"></param>
+        //private void AdjustContainerPivot(RectTransform rtf)
+        //{
+        //    Vector2 pivot = rtf.pivot;
+        //    switch (mArrangeType)
+        //    {
+        //        case ListItemArrangeType.TopToBottom:
+        //            pivot.y = 1;
+        //            break;
+        //    }
+        //    rtf.pivot = pivot;
+        //}
 
         private void InitItemPool()
         {
@@ -334,8 +346,8 @@ namespace LuyuScrollView
                     Debug.LogError("RectTrasform component is not found in the prefab" + prefabName);
                     continue;
                 }
-                AdjustAnchor(rtf);
-                AdjustPivot(rtf);
+                //AdjustAnchor(rtf);
+                //AdjustPivot(rtf);
                 LoopListViewItem2 tItem = data.mItemPrefab.GetComponent<LoopListViewItem2>();
                 if (tItem == null)
                 {
