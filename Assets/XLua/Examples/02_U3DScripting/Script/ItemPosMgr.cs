@@ -207,13 +207,13 @@ namespace LuyuScrollView
             mTotalSize += changeSize;
         }
 
-        public float GetItemPos(int itemIndex)
-        {
-            Update(true);
-            int groupIndex = itemIndex / mItemMaxCountPerGroup;
-            int indexInGroup = itemIndex % mItemMaxCountPerGroup;
-            return mItemSizeGroupList[groupIndex].GetItemStartPos(indexInGroup);
-        }
+        //public float GetItemPos(int itemIndex)
+        //{
+        //    Update(true);
+        //    int groupIndex = itemIndex / mItemMaxCountPerGroup;
+        //    int indexInGroup = itemIndex % mItemMaxCountPerGroup;
+        //    return mItemSizeGroupList[groupIndex].GetItemStartPos(indexInGroup);
+        //}
 
         public void GetItemIndexAndPosAtGivenPos(float pos, ref int index, ref float itemPos)
         {

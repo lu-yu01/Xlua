@@ -136,19 +136,19 @@ namespace LuyuScrollView
     public class LoopListView2 : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
     {
 
-        class SnapDarta
-        {
-            public SnapStatus mSnapStatus = SnapStatus.NoTargetSet;
-            public int mSnapTargetIndex = 0;
-            public float mTargetSnapVal = 0;
-            public float mCurSnapVal = 0;
-            public bool mIsForceSnapTo = false;
-            public void Clear()
-            {
-                mSnapStatus = SnapStatus.NoTargetSet;
-                mIsForceSnapTo = false;
-            }
-        }
+        //class SnapDarta
+        //{
+        //    public SnapStatus mSnapStatus = SnapStatus.NoTargetSet;
+        //    public int mSnapTargetIndex = 0;
+        //    public float mTargetSnapVal = 0;
+        //    public float mCurSnapVal = 0;
+        //    public bool mIsForceSnapTo = false;
+        //    public void Clear()
+        //    {
+        //        mSnapStatus = SnapStatus.NoTargetSet;
+        //        mIsForceSnapTo = false;
+        //    }
+        //}
 
 
         Dictionary<string, ItemPool> mItemPoolDict = new Dictionary<string, ItemPool>();
@@ -159,10 +159,10 @@ namespace LuyuScrollView
         RectTransform mViewPortRectTransform = null;
         float mItemDefaultWithPaddingSize = 20;
         bool mIsVertList = false;
-        int mLeftSnapUpdateExtraCount = 1;
+        //int mLeftSnapUpdateExtraCount = 1;
         int mItemTotalCount = 0;
         bool mIsDraging = false;
-        SnapDarta mCurSnapData = new SnapDarta();
+        //SnapDarta mCurSnapData = new SnapDarta();
         [SerializeField]
         private ListItemArrangeType mArrangeType = ListItemArrangeType.TopToBottom;
         public ListItemArrangeType ArrangeType
@@ -205,19 +205,19 @@ namespace LuyuScrollView
         float mDistanceForRecycle1 = 300;
         float mDistanceForNew1 = 200;
         //bool mItemSnapEnable = false;
-        Vector3 mLastSnapCheckPos = Vector3.zero;
-        Vector2 mAdjustedVec;
-        Vector3 mLastFrameContainerPos = Vector3.zero;
-        [SerializeField]
-        Vector2 mViewPortSnapPivot = Vector2.zero;
-        [SerializeField]
-        Vector2 mItemSnapPivot = Vector2.zero;
+        //Vector3 mLastSnapCheckPos = Vector3.zero;
+        //Vector2 mAdjustedVec;
+        //Vector3 mLastFrameContainerPos = Vector3.zero;
+        //[SerializeField]
+        //Vector2 mViewPortSnapPivot = Vector2.zero;
+        //[SerializeField]
+        //Vector2 mItemSnapPivot = Vector2.zero;
         //int mCurSnapNearestItemIndex = -1;
         //float mSmoothDumpVel = 0;
         //float mSmoothDumpRate = 0.3f;
         //float mSnapFinishThreshold = 0.1f;
         //float mSnapVecThreshold = 145;
-        PointerEventData mPointerEventData = null;
+        //PointerEventData mPointerEventData = null;
         public bool IsVertList
         {
             get
@@ -243,7 +243,7 @@ namespace LuyuScrollView
             {
                 Debug.LogError("ListView Init Failed! ScrollRect component not found!");
             }
-            mCurSnapData.Clear();
+            //mCurSnapData.Clear();
             mItemPosMgr = new ItemPosMgr(mItemDefaultWithPaddingSize);
             mScrollRectTransform = mScrollRect.GetComponent<RectTransform>();
             mContainerTrans = mScrollRect.content;
@@ -364,7 +364,7 @@ namespace LuyuScrollView
         {
             mIsDraging = true;
            // CacheDragPointerEventData(eventData);
-            mCurSnapData.Clear();
+            //mCurSnapData.Clear();
         }
 
         public virtual void OnEndDrag(PointerEventData eventData)
@@ -401,10 +401,10 @@ namespace LuyuScrollView
         public void ResetListView(bool resetPos = true)
         {
             mViewPortRectTransform.GetLocalCorners(mViewPortRectLocalCorners);
-            if (resetPos)
-            {
-                mContainerTrans.anchoredPosition3D = Vector3.zero;
-            }
+            //if (resetPos)
+            //{
+            //    mContainerTrans.anchoredPosition3D = Vector3.zero;
+            //}
            // ForceSnapUpdateCheck();
         }
 
@@ -425,7 +425,7 @@ namespace LuyuScrollView
             {
                 return;
             }
-            mCurSnapData.Clear();
+            //mCurSnapData.Clear();
             mItemTotalCount = itemCount;
             if (mItemTotalCount < 0)
             {
@@ -447,14 +447,14 @@ namespace LuyuScrollView
                 mNeedCheckNextMinItem = false;
                 RecycleAllItem();
                 ClearAllTmpRecycledItem();
-                UpdateContentSize();
+                //UpdateContentSize();
                 return;
             }
             if (mCurReadyMaxItemIndex >= mItemTotalCount)
             {
                 mCurReadyMaxItemIndex = mItemTotalCount - 1;
             }
-            mLeftSnapUpdateExtraCount = 1;
+            //mLeftSnapUpdateExtraCount = 1;
             mNeedCheckNextMaxItem = true;
             mNeedCheckNextMinItem = true;
             if (resetPos)
@@ -471,8 +471,8 @@ namespace LuyuScrollView
             int lastItemIndex = mItemList[mItemList.Count - 1].ItemIndex;
             if (lastItemIndex <= maxItemIndex)
             {
-                UpdateContentSize();
-                UpdateAllShownItemsPos();
+                //UpdateContentSize();
+                //UpdateAllShownItemsPos();
                 return;
             }
             MovePanelToItemIndex(maxItemIndex, 0);
@@ -514,6 +514,9 @@ namespace LuyuScrollView
             }
         }
 
+        /// <summary>
+        /// UpdateContentSize
+        /// </summary>
         void UpdateContentSize()
         {
             float size = GetContentPanelSize();
@@ -524,13 +527,13 @@ namespace LuyuScrollView
                     mContainerTrans.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, size);
                 }
             }
-            else
-            {
-                if (mContainerTrans.rect.width != size)
-                {
-                    mContainerTrans.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, size);
-                }
-            }
+            //else
+            //{
+            //    if (mContainerTrans.rect.width != size)
+            //    {
+            //        mContainerTrans.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, size);
+            //    }
+            //}
         }
 
         private float GetContentPanelSize()
@@ -569,7 +572,7 @@ namespace LuyuScrollView
         public void MovePanelToItemIndex(int itemIndex, float offset)
         {
             mScrollRect.StopMovement();
-            mCurSnapData.Clear();
+            //mCurSnapData.Clear();
             if (itemIndex < 0 || mItemTotalCount == 0)
             {
                 return;
@@ -619,15 +622,15 @@ namespace LuyuScrollView
                 {
                     SetItemSize(itemIndex, newItem.CachedRectTransform.rect.height, newItem.Padding);
                 }
-                else
-                {
-                    SetItemSize(itemIndex, newItem.CachedRectTransform.rect.width, newItem.Padding);
-                }
+                //else
+                //{
+                //    SetItemSize(itemIndex, newItem.CachedRectTransform.rect.width, newItem.Padding);
+                //}
             }
             mItemList.Add(newItem);
             UpdateContentSize();
             UpdateListView(viewPortSize + 100, viewPortSize + 100, viewPortSize, viewPortSize);
-            AdjustPanelPos();
+            //AdjustPanelPos();
             ClearAllTmpRecycledItem();
 
 
@@ -679,103 +682,108 @@ namespace LuyuScrollView
                 mLastItemPadding = padding;
             }
         }
+        /// <summary>
+        /// AdjustPanelPos
+        /// </summary>
+        //private void AdjustPanelPos()
+        //{
+        //    int count = mItemList.Count;
+        //    if (count == 0)
+        //    {
+        //        return;
+        //    }
+        //    UpdateAllShownItemsPos();
+        //    float viewPortSize = ViewPortSize;
+        //    float contentSize = GetContentPanelSize();
+        //    if (mArrangeType == ListItemArrangeType.TopToBottom)
+        //    {
+        //        if (contentSize <= viewPortSize)
+        //        {
+        //            Vector3 pos = mContainerTrans.anchoredPosition3D;
+        //            pos.y = 0;
+        //            mContainerTrans.anchoredPosition3D = pos;
+        //            mItemList[0].CachedRectTransform.anchoredPosition3D = new Vector3(mItemList[0].StartPosOffset, 0, 0);
+        //            UpdateAllShownItemsPos();
+        //            return;
+        //        }
+        //        LoopListViewItem2 tViewItem0 = mItemList[0];
+        //        tViewItem0.CachedRectTransform.GetWorldCorners(mItemWorldCorners);
+        //        Vector3 topPos0 = mViewPortRectTransform.InverseTransformPoint(mItemWorldCorners[1]);
+        //        if (topPos0.y < mViewPortRectLocalCorners[1].y)
+        //        {
+        //            Vector3 pos = mContainerTrans.anchoredPosition3D;
+        //            pos.y = 0;
+        //            mContainerTrans.anchoredPosition3D = pos;
+        //            mItemList[0].CachedRectTransform.anchoredPosition3D = new Vector3(mItemList[0].StartPosOffset, 0, 0);
+        //            UpdateAllShownItemsPos();
+        //            return;
+        //        }
+        //        LoopListViewItem2 tViewItem1 = mItemList[mItemList.Count - 1];
+        //        tViewItem1.CachedRectTransform.GetWorldCorners(mItemWorldCorners);
+        //        Vector3 downPos1 = mViewPortRectTransform.InverseTransformPoint(mItemWorldCorners[0]);
+        //        float d = downPos1.y - mViewPortRectLocalCorners[0].y;
+        //        if (d > 0)
+        //        {
+        //            Vector3 pos = mItemList[0].CachedRectTransform.anchoredPosition3D;
+        //            pos.y = pos.y - d;
+        //            mItemList[0].CachedRectTransform.anchoredPosition3D = pos;
+        //            UpdateAllShownItemsPos();
+        //            return;
+        //        }
+        //    }
+        //}
 
-         private void AdjustPanelPos()
-        {
-            int count = mItemList.Count;
-            if (count == 0)
-            {
-                return;
-            }
-            UpdateAllShownItemsPos();
-            float viewPortSize = ViewPortSize;
-            float contentSize = GetContentPanelSize();
-            if (mArrangeType == ListItemArrangeType.TopToBottom)
-            {
-                if (contentSize <= viewPortSize)
-                {
-                    Vector3 pos = mContainerTrans.anchoredPosition3D;
-                    pos.y = 0;
-                    mContainerTrans.anchoredPosition3D = pos;
-                    mItemList[0].CachedRectTransform.anchoredPosition3D = new Vector3(mItemList[0].StartPosOffset, 0, 0);
-                    UpdateAllShownItemsPos();
-                    return;
-                }
-                LoopListViewItem2 tViewItem0 = mItemList[0];
-                tViewItem0.CachedRectTransform.GetWorldCorners(mItemWorldCorners);
-                Vector3 topPos0 = mViewPortRectTransform.InverseTransformPoint(mItemWorldCorners[1]);
-                if (topPos0.y < mViewPortRectLocalCorners[1].y)
-                {
-                    Vector3 pos = mContainerTrans.anchoredPosition3D;
-                    pos.y = 0;
-                    mContainerTrans.anchoredPosition3D = pos;
-                    mItemList[0].CachedRectTransform.anchoredPosition3D = new Vector3(mItemList[0].StartPosOffset, 0, 0);
-                    UpdateAllShownItemsPos();
-                    return;
-                }
-                LoopListViewItem2 tViewItem1 = mItemList[mItemList.Count - 1];
-                tViewItem1.CachedRectTransform.GetWorldCorners(mItemWorldCorners);
-                Vector3 downPos1 = mViewPortRectTransform.InverseTransformPoint(mItemWorldCorners[0]);
-                float d = downPos1.y - mViewPortRectLocalCorners[0].y;
-                if (d > 0)
-                {
-                    Vector3 pos = mItemList[0].CachedRectTransform.anchoredPosition3D;
-                    pos.y = pos.y - d;
-                    mItemList[0].CachedRectTransform.anchoredPosition3D = pos;
-                    UpdateAllShownItemsPos();
-                    return;
-                }
-            }
-        }
+        /// <summary>
+        /// UpdateAllShownItemsPos
+        /// </summary>
+        //void UpdateAllShownItemsPos()
+        //{
+        //    int count = mItemList.Count;
+        //    if (count == 0)
+        //    {
+        //        return;
+        //    }
 
-        void UpdateAllShownItemsPos()
-        {
-            int count = mItemList.Count;
-            if (count == 0)
-            {
-                return;
-            }
+        //    mAdjustedVec = (mContainerTrans.anchoredPosition3D - mLastFrameContainerPos) / Time.deltaTime;
 
-            mAdjustedVec = (mContainerTrans.anchoredPosition3D - mLastFrameContainerPos) / Time.deltaTime;
+        //    if (mArrangeType == ListItemArrangeType.TopToBottom)
+        //    {
+        //        float pos = 0;
+        //        if (mSupportScrollBar)
+        //        {
+        //            pos = -GetItemPos(mItemList[0].ItemIndex);
+        //        }
 
-            if (mArrangeType == ListItemArrangeType.TopToBottom)
-            {
-                float pos = 0;
-                if (mSupportScrollBar)
-                {
-                    pos = -GetItemPos(mItemList[0].ItemIndex);
-                }
+        //        float pos1 = mItemList[0].CachedRectTransform.anchoredPosition3D.y;
+        //        float d = pos - pos1;
+        //        float curY = pos;
+        //        for (int i = 0; i < count; ++i)
+        //        {
+        //            LoopListViewItem2 item = mItemList[i];
+        //            item.CachedRectTransform.anchoredPosition3D = new Vector3(item.StartPosOffset, curY, 0);
+        //            curY = curY - item.CachedRectTransform.rect.height - item.Padding;
+        //        }
+        //        if (d != 0)
+        //        {
+        //            Vector2 p = mContainerTrans.anchoredPosition3D;
+        //            p.y = p.y - d;
+        //            mContainerTrans.anchoredPosition3D = p;
+        //        }
+        //    }
+        //    //if (mIsDraging)
+        //    //{
+        //    //    Debug.Log("mIsDraging:" + mIsDraging);
+        //    //    mScrollRect.OnBeginDrag(mPointerEventData);
+        //    //    mScrollRect.Rebuild(CanvasUpdate.PostLayout);
+        //    //    mScrollRect.velocity = mAdjustedVec;
+        //    //    mNeedAdjustVec = true;
+        //    //}
+        //}
 
-                float pos1 = mItemList[0].CachedRectTransform.anchoredPosition3D.y;
-                float d = pos - pos1;
-                float curY = pos;
-                for (int i = 0; i < count; ++i)
-                {
-                    LoopListViewItem2 item = mItemList[i];
-                    item.CachedRectTransform.anchoredPosition3D = new Vector3(item.StartPosOffset, curY, 0);
-                    curY = curY - item.CachedRectTransform.rect.height - item.Padding;
-                }
-                if (d != 0)
-                {
-                    Vector2 p = mContainerTrans.anchoredPosition3D;
-                    p.y = p.y - d;
-                    mContainerTrans.anchoredPosition3D = p;
-                }
-            }
-            //if (mIsDraging)
-            //{
-            //    Debug.Log("mIsDraging:" + mIsDraging);
-            //    mScrollRect.OnBeginDrag(mPointerEventData);
-            //    mScrollRect.Rebuild(CanvasUpdate.PostLayout);
-            //    mScrollRect.velocity = mAdjustedVec;
-            //    mNeedAdjustVec = true;
-            //}
-        }
-
-        float GetItemPos(int itemIndex)
-        {
-            return mItemPosMgr.GetItemPos(itemIndex);
-        }
+        //float GetItemPos(int itemIndex)
+        //{
+        //    return mItemPosMgr.GetItemPos(itemIndex);
+        //}
 
         public void UpdateListView(float distanceForRecycle0, float distanceForRecycle1, float distanceForNew0, float distanceForNew1)
         {
@@ -860,7 +868,7 @@ namespace LuyuScrollView
                     if (!mSupportScrollBar)
                     {
                         UpdateContentSize();
-                        CheckIfNeedUpdataItemPos();
+                        //CheckIfNeedUpdataItemPos();
                     }
                     return true;
                 }
@@ -877,7 +885,7 @@ namespace LuyuScrollView
                     if (!mSupportScrollBar)
                     {
                         UpdateContentSize();
-                        CheckIfNeedUpdataItemPos();
+                        //CheckIfNeedUpdataItemPos();
                     }
                     return true;
                 }
@@ -901,7 +909,7 @@ namespace LuyuScrollView
                         {
                             mCurReadyMaxItemIndex = tViewItem1.ItemIndex;
                             mNeedCheckNextMaxItem = false;
-                            CheckIfNeedUpdataItemPos();
+                            //CheckIfNeedUpdataItemPos();
                         }
                         else
                         {
@@ -913,7 +921,7 @@ namespace LuyuScrollView
                             float y = tViewItem1.CachedRectTransform.anchoredPosition3D.y - tViewItem1.CachedRectTransform.rect.height - tViewItem1.Padding;
                             newItem.CachedRectTransform.anchoredPosition3D = new Vector3(newItem.StartPosOffset, y, 0);
                             UpdateContentSize();
-                            CheckIfNeedUpdataItemPos();
+                            //CheckIfNeedUpdataItemPos();
 
                             if (nIndex > mCurReadyMaxItemIndex)
                             {
@@ -952,7 +960,7 @@ namespace LuyuScrollView
                             float y = tViewItem0.CachedRectTransform.anchoredPosition3D.y + newItem.CachedRectTransform.rect.height + newItem.Padding;
                             newItem.CachedRectTransform.anchoredPosition3D = new Vector3(newItem.StartPosOffset, y, 0);
                             UpdateContentSize();
-                            CheckIfNeedUpdataItemPos();
+                            //CheckIfNeedUpdataItemPos();
                             if (nIndex < mCurReadyMinItemIndex)
                             {
                                 mCurReadyMinItemIndex = nIndex;
@@ -969,31 +977,34 @@ namespace LuyuScrollView
             return false;
         }
 
-        private void CheckIfNeedUpdataItemPos()
-        {
-            int count = mItemList.Count;
-            if (count == 0)
-            {
-                return;
-            }
-            if (mArrangeType == ListItemArrangeType.TopToBottom)
-            {
-                LoopListViewItem2 firstItem = mItemList[0];
-                LoopListViewItem2 lastItem = mItemList[mItemList.Count - 1];
-                float viewMaxY = GetContentPanelSize();
-                if (firstItem.TopY > 0 || (firstItem.ItemIndex == mCurReadyMinItemIndex && firstItem.TopY != 0))
-                {
-                    UpdateAllShownItemsPos();
-                    return;
-                }
-                if ((-lastItem.BottomY) > viewMaxY || (lastItem.ItemIndex == mCurReadyMaxItemIndex && (-lastItem.BottomY) != viewMaxY))
-                {
-                    UpdateAllShownItemsPos();
-                    return;
-                }
+        /// <summary>
+        /// CheckIfNeedUpdataItemPos
+        /// </summary>
+        //private void CheckIfNeedUpdataItemPos()
+        //{
+        //    int count = mItemList.Count;
+        //    if (count == 0)
+        //    {
+        //        return;
+        //    }
+        //    if (mArrangeType == ListItemArrangeType.TopToBottom)
+        //    {
+        //        LoopListViewItem2 firstItem = mItemList[0];
+        //        LoopListViewItem2 lastItem = mItemList[mItemList.Count - 1];
+        //        float viewMaxY = GetContentPanelSize();
+        //        if (firstItem.TopY > 0 || (firstItem.ItemIndex == mCurReadyMinItemIndex && firstItem.TopY != 0))
+        //        {
+        //            UpdateAllShownItemsPos();
+        //            return;
+        //        }
+        //        if ((-lastItem.BottomY) > viewMaxY || (lastItem.ItemIndex == mCurReadyMaxItemIndex && (-lastItem.BottomY) != viewMaxY))
+        //        {
+        //            UpdateAllShownItemsPos();
+        //            return;
+        //        }
 
-            }
-          }
+        //    }
+        //  }
 
         void GetPlusItemIndexAndPosAtGivenPos(float pos, ref int index, ref float itemPos)
         {
@@ -1046,7 +1057,7 @@ namespace LuyuScrollView
             //UpdateSnapMove();
             UpdateListView(mDistanceForRecycle0, mDistanceForRecycle1, mDistanceForNew0, mDistanceForNew1);
             ClearAllTmpRecycledItem();
-            mLastFrameContainerPos = mContainerTrans.anchoredPosition3D;
+            //mLastFrameContainerPos = mContainerTrans.anchoredPosition3D;
         }
 
         /// <summary>
@@ -1302,10 +1313,10 @@ namespace LuyuScrollView
         //    return true;
         //}
 
-        public void ClearSnapData()
-        {
-            mCurSnapData.Clear();
-        }
+        //public void ClearSnapData()
+        //{
+        //    mCurSnapData.Clear();
+        //}
 
         /// <summary>
         /// UpdateCurSnapData
@@ -1362,20 +1373,21 @@ namespace LuyuScrollView
 
         //}
 
-        public LoopListViewItem2 GetShownItemByItemIndex(int itemIndex)
-        {
-            int count = mItemList.Count;
-            if (count == 0)
-            {
-                return null;
-            }
-            if (itemIndex < mItemList[0].ItemIndex || itemIndex > mItemList[count - 1].ItemIndex)
-            {
-                return null;
-            }
-            int i = itemIndex - mItemList[0].ItemIndex;
-            return mItemList[i];
-        }
+        
+        //public LoopListViewItem2 GetShownItemByItemIndex(int itemIndex)
+        //{
+        //    int count = mItemList.Count;
+        //    if (count == 0)
+        //    {
+        //        return null;
+        //    }
+        //    if (itemIndex < mItemList[0].ItemIndex || itemIndex > mItemList[count - 1].ItemIndex)
+        //    {
+        //        return null;
+        //    }
+        //    int i = itemIndex - mItemList[0].ItemIndex;
+        //    return mItemList[i];
+        //}
 
         /// <summary>
         /// UpdateAllShownItemSnapData
