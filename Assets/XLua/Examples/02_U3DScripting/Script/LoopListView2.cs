@@ -227,14 +227,14 @@ namespace LuyuScrollView
 
         }
 
-        public float ViewPortWidth
-        {
-            get { return mViewPortRectTransform.rect.width; }
-        }
-        public float ViewPortHeight
-        {
-            get { return mViewPortRectTransform.rect.height; }
-        }
+        //public float ViewPortWidth
+        //{
+        //    get { return mViewPortRectTransform.rect.width; }
+        //}
+        //public float ViewPortHeight
+        //{
+        //    get { return mViewPortRectTransform.rect.height; }
+        //}
 
         public void initListView(int itemTotalCount, System.Func<LoopListView2, int, LoopListViewItem2> onGetItemIndex)
         {
@@ -661,7 +661,7 @@ namespace LuyuScrollView
             {
                 return null;
             }
-            Debug.LogError("index:" + index.ToString());
+            //Debug.LogError("index:" + index.ToString());
             LoopListViewItem2 newItem = mOnGetItemByIndex(this, index);
             if (newItem == null)
             {

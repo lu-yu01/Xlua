@@ -264,7 +264,10 @@ namespace LuyuScrollView
             itemPos = hitGroup.GetItemStartPos(hitIndex);
         }
 
-
+        /// <summary>
+        /// Update
+        /// </summary>
+        /// <param name="updateAll"></param>
         public void Update(bool updateAll)
         {
             int count = mItemSizeGroupList.Count;
