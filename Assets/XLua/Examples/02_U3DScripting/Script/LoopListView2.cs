@@ -441,12 +441,12 @@ namespace LuyuScrollView
             }
             if (mItemTotalCount == 0)
             {
-                mCurReadyMaxItemIndex = 0;
-                mCurReadyMinItemIndex = 0;
-                mNeedCheckNextMaxItem = false;
-                mNeedCheckNextMinItem = false;
-                RecycleAllItem();
-                ClearAllTmpRecycledItem();
+                //mCurReadyMaxItemIndex = 0;
+                //mCurReadyMinItemIndex = 0;
+                //mNeedCheckNextMaxItem = false;
+                //mNeedCheckNextMinItem = false;
+                //RecycleAllItem();
+                //ClearAllTmpRecycledItem();
                 //UpdateContentSize();
                 return;
             }
@@ -538,35 +538,35 @@ namespace LuyuScrollView
 
         private float GetContentPanelSize()
         {
-            if (mSupportScrollBar)
-            {
+           // if (mSupportScrollBar)
+            //{
                 float tTotalSize = mItemPosMgr.mTotalSize > 0 ? (mItemPosMgr.mTotalSize - mLastItemPadding) : 0;
                 if (tTotalSize < 0)
                 {
                     tTotalSize = 0;
                 }
                 return tTotalSize;
-            }
-            int count = mItemList.Count;
-            if (count == 0)
-            {
-                return 0;
-            }
-            if (count == 1)
-            {
-                return mItemList[0].ItemSize;
-            }
-            if (count == 2)
-            {
-                return mItemList[0].ItemSizeWithPadding + mItemList[1].ItemSize;
-            }
-            float s = 0;
-            for (int i = 0; i < count-1; ++i)
-            {
-                s += mItemList[i].ItemSizeWithPadding;
-            }
-            s += mItemList[count - 1].ItemSize;
-            return s;
+            //}
+            //int count = mItemList.Count;
+            //if (count == 0)
+            //{
+            //    return 0;
+            //}
+            //if (count == 1)
+            //{
+            //    return mItemList[0].ItemSize;
+            //}
+            //if (count == 2)
+            //{
+            //    return mItemList[0].ItemSizeWithPadding + mItemList[1].ItemSize;
+            //}
+            //float s = 0;
+            //for (int i = 0; i < count-1; ++i)
+            //{
+            //    s += mItemList[i].ItemSizeWithPadding;
+            //}
+            //s += mItemList[count - 1].ItemSize;
+            //return s;
         }
 
         public void MovePanelToItemIndex(int itemIndex, float offset)

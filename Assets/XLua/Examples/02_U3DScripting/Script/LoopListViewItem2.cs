@@ -14,7 +14,7 @@ namespace LuyuScrollView
         string mItemPrefabName;
         RectTransform mCachedRectTransform;
         float mPadding;
-        float mDistanceWithViewPortSnapCenter = 0;
+        //float mDistanceWithViewPortSnapCenter = 0;
         int mItemCreatedCheckFrameCount = 0;
         float mStartPosOffset = 0;
 
@@ -146,31 +146,31 @@ namespace LuyuScrollView
             }
         }
 
-        public float TopY
-        {
-            get
-            {
-                ListItemArrangeType arrageType = ParentListView.ArrangeType;
-                if (arrageType == ListItemArrangeType.TopToBottom)
-                {
-                    return CachedRectTransform.anchoredPosition3D.y;
-                }
-                return 0;
-            }
-        }
+        //public float TopY
+        //{
+        //    get
+        //    {
+        //        ListItemArrangeType arrageType = ParentListView.ArrangeType;
+        //        if (arrageType == ListItemArrangeType.TopToBottom)
+        //        {
+        //            return CachedRectTransform.anchoredPosition3D.y;
+        //        }
+        //        return 0;
+        //    }
+        //}
 
-        public float BottomY
-        {
-            get
-            {
-                ListItemArrangeType arrageType = ParentListView.ArrangeType;
-                if (arrageType == ListItemArrangeType.TopToBottom)
-                {
-                    return CachedRectTransform.anchoredPosition3D.y - CachedRectTransform.rect.height;
-                }
-                return 0;
-            }
-        }
+        //public float BottomY
+        //{
+        //    get
+        //    {
+        //        ListItemArrangeType arrageType = ParentListView.ArrangeType;
+        //        if (arrageType == ListItemArrangeType.TopToBottom)
+        //        {
+        //            return CachedRectTransform.anchoredPosition3D.y - CachedRectTransform.rect.height;
+        //        }
+        //        return 0;
+        //    }
+        //}
 
 
         //public float LeftX

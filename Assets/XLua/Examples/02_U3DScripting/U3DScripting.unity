@@ -1180,8 +1180,6 @@ MonoBehaviour:
     mPadding: 10
     mInitCreateCount: 3
     mStartPosOffset: 0
-  mViewPortSnapPivot: {x: 0, y: 0}
-  mItemSnapPivot: {x: 0, y: 0}
 --- !u!1 &2061622142
 GameObject:
   m_ObjectHideFlags: 0
